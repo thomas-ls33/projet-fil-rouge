@@ -6,10 +6,11 @@ Les données sont pour l'instant **locales** (définies dans le code). Ce fichie
 
 ## Fonctionnalités actuelles
 
-- **Écran d'accueil** (`ProductHomeScreen`) : en-tête, barre de recherche visuelle, produit mis en avant, catégories, offre du jour.
+- **Catalogue de produits** (`ProductCatalogScreen`) : écran de lancement. Un `LazyColumn` affiche un titre, une description, une ligne de catégories (`LazyRow`) et quatre produits sous forme de cartes.
 - **Écran de détail produit** (`ProductDetailScreen`) : image, titre, marque, catégorie, prix et remise, note, stock et livraison, description, garantie, bouton « Ajouter au panier ».
-- **Navigation simple** : le bouton « Voir le produit » de l'accueil ouvre le détail, et le bouton retour revient à l'accueil. Il s'agit d'un simple état (`showDetail`), pas encore de Navigation Compose.
-- **Fiche produit de démonstration** (`ProductCardDemo.kt`) : carte cliquable avec bouton favori, conservée des premiers TP. Elle n'est pas affichée dans l'app, seulement dans les previews.
+- **Navigation simple** : le bouton « Voir le produit » d'une carte ouvre le détail de ce produit, et le bouton retour revient au catalogue. Il s'agit d'un simple état (`selectedProduct`), pas encore de Navigation Compose.
+- **Thème Material 3** : palettes claire et sombre, typographie et formes personnalisées, appliquées à toute l'application. Les couleurs dynamiques (Material You) sont désactivées.
+- **Écran d'accueil** (`ProductHomeScreen`) et **fiche produit de démonstration** (`ProductCardDemo.kt`) : conservés des TP précédents, mais non affichés dans l'app (visibles seulement dans les previews).
 
 ## Stack technique
 
@@ -25,10 +26,11 @@ Les données sont pour l'instant **locales** (définies dans le code). Ce fichie
 
 ```
 app/src/main/java/com/example/tpfilrouge/
-├── MainActivity.kt        Activité, ProductUi, données d'exemple, écran de détail et ses composants
-├── ProductHomeScreen.kt   Écran d'accueil et ses sections
-├── ProductCardDemo.kt     Fiche produit des TP 2 et 3
-└── ui/theme/              Thème (couleurs, typographie)
+├── MainActivity.kt         Activité, ProductUi, produits d'exemple, écran de détail et ses composants
+├── ProductCatalogScreen.kt Catalogue, liste de produits, catégories
+├── ProductHomeScreen.kt    Écran d'accueil et ses sections (dont CategoryChip)
+├── ProductCardDemo.kt      Fiche produit des TP 2 et 3
+└── ui/theme/               Thème (couleurs, formes, typographie)
 ```
 
 ## Lancer le projet
