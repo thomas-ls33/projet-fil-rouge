@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tpfilrouge.ui.theme.TPFilRougeTheme
 
 data class ProductUi(
+    val id: Int,
     val title: String,
     val brand: String,
     val category: String,
@@ -48,6 +49,7 @@ data class ProductUi(
 
 fun sampleProduct(): ProductUi {
     return ProductUi(
+        id = 1,
         title = "Smartphone Toto X",
         brand = "TotoTech",
         category = "Smartphones",
@@ -63,6 +65,7 @@ fun sampleProduct(): ProductUi {
 
 fun sampleProductOutOfStock(): ProductUi {
     return ProductUi(
+        id = 2,
         title = "Casque Audio Pulse",
         brand = "SoundPeak",
         category = "Audio",
@@ -83,21 +86,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TPFilRougeTheme {
-                var showDetail by remember { mutableStateOf(false) }
-                BackHandler(enabled = showDetail) { showDetail = false }
+                var selectedProduct by remember { mutableStateOf<ProductUi?>(null) }
+                BackHandler(enabled = selectedProduct != null) { selectedProduct = null }
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    if (showDetail) {
+                    val product = selectedProduct
+                    if (product != null) {
                         ProductDetailScreen(
-                            product = sampleProduct(),
+                            product = product,
                             onAddToCartClick = {
                                 // Action à ajouter plus tard
                             },
                             modifier = Modifier.padding(innerPadding)
                         )
                     } else {
-                        ProductHomeScreen(
-                            featuredProduct = sampleProduct(),
-                            onFeaturedProductClick = { showDetail = true },
+                        ProductCatalogScreen(
+                            products = sampleProducts(),
+                            onProductClick = { selectedProduct = it },
                             modifier = Modifier.padding(innerPadding)
                         )
                     }
