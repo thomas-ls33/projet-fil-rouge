@@ -11,13 +11,6 @@ Les données sont pour l'instant **locales** (définies dans le code). Ce fichie
 - **Navigation simple** : le bouton « Voir le produit » de l'accueil ouvre le détail, et le bouton retour revient à l'accueil. Il s'agit d'un simple état (`showDetail`), pas encore de Navigation Compose.
 - **Fiche produit de démonstration** (`ProductCardDemo.kt`) : carte cliquable avec bouton favori, conservée des premiers TP. Elle n'est pas affichée dans l'app, seulement dans les previews.
 
-## Limites connues
-
-- Le bouton « Ajouter au panier » et le bouton favori ne font rien (pas encore de gestion d'état).
-- La barre de recherche est purement visuelle.
-- L'image produit est un placeholder Android.
-- Un seul produit est affiché dans l'app. Le second exemple (`sampleProductOutOfStock()`) n'apparaît que dans une preview.
-
 ## Stack technique
 
 | Élément | Détail |
@@ -49,20 +42,3 @@ Vérification en ligne de commande :
 ```
 ./gradlew :app:compileDebugKotlin
 ```
-
-## Historique des TP
-
-| TP | Contenu | Statut |
-|---|---|---|
-| 1 | Première application, `Greeting`, `Surface`, `padding` | Fait (remplacé par la suite) |
-| 2 | Composables, paramètres, « state down, events up » | Fait |
-| 3 | Composants réutilisables, `Modifier`, accessibilité | Fait |
-| 4 | Écran de détail produit (`Text`, `Image`, `Icon`, `Card`, `TextField`) | Fait |
-| 5 | Écran d'accueil (`Column`, `Row`, `Box`, `Spacer`, `Surface`) | Fait |
-
-## Prochaines étapes
-
-- [ ] Catalogue local de produits avec listes (`LazyColumn`)
-- [ ] Gestion d'état réelle (favoris, panier)
-- [ ] Navigation entre écrans (Navigation Compose)
-- [ ] Données distantes
